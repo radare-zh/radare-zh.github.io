@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>radare</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="fira.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+  <script src="js/index.js"></script>
+  <link rel="shortcut icon" href="img/favicon.ico">
+</head>
+<body>
+  <div class="menubar">
+    <a class="rtopbutton" href="index.html"><img src="img/r2logo32.png" alt="radare.org"></a>
+    <nav>
+      <ul>
+        <li><a href="down.html">Code</a></li>
+        <li><a href="talks.html">Talks</a></li>
+        <li><a href="docs.html">Docs</a></li>
+        <li><a href="pics.html">Pics</a></li>
+        <li><a href="me.html">Me</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main">
+
+<div class="header">
+  <h1>History</h1>
+  </div>
+  <div class="block2">
+  <p>Radare was born in 2006 when <em>pancake</em> was working as a forensic analyst. He decided to write a simple hexadecimal editor with support for searching patterns and dumping the search results to disk to recover some PHP files deleted from an HFS partition.</p>
+
+<p>RA-DA-RE stands for RAw DAta REcovery.</p>
+
+<p>Radare was handy tool, and other features were added on top of the simple command line hexadecimal editor to support disassemblers, file format parsers, debuggers and more.</p>
+
+<p>The design of radare inspired by basic *NIX concepts like &#39;protocols are in plain text&#39;, &#39;everything is a file&#39;, &#39;small programs that interact together using stdin/out&#39; and &#39;keep it simple&#39;. Most of the power of radare&#39;s commands comes from the ability to combine them with other commands by comunicating through pipes.</p>
+
+<p>In 2009, the first implementation of radare reached a point where evolving required a full redesign of the code base to properly support scripting language bindings.</p>
+
+<p>Radare2 began as a rewrite of the radare codebase following a modular design and licensed under LGPLv3. Radare2 was developed in parallel with radare, because despite the better design it took time to reach feature parity with radare.</p>
+
+<p>By 2014, radare2 had reached a state complete enough to fully replace radare1. Although there are still some features missing in the debugger, radare2 has matched or surpassed radare1 in nearly every way.</p>
+
+<p>Last year (in 2014), the project grew very quickly, (IRC had 40 users in January and 170 in December), the Radare Summer of Code (RSoC) brought new features, users, and developers. There were also many talks and trainings at international security conferences.</p>
+
+<p>Radare is moving from a personal project to a community project after 8 years of development. As the project grows, more time and effort is required for reviewing code contributions, implementing proper security development practices, writing a proper test suite, fuzzing different inputs (file formats, demanglers, disassemblers, command syntax, etc.), running with coverity, reviewing all compiler warnings, llvm-analyzer, valgrind, ASAN, and more to come!</p>
+
+<p>Even though the console interface is extremely powerful, one of the major requests for r2 has always been a proper GUI. Radare2 now has a web frontend which should feel familiar to users of commercial disassemblers. The r2pipe API can also be used from Python, NodeJS or Web Browsers, and offers a powerful interface to automatize tasks or interact with the radare2 core.
+  </p>
+  </div>
+  <br /><br />
+    </div> <!-- .main -->
+
+  </body>
+</html>
+

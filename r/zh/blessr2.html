@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>radare</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="/r/fira.css">
+  <link rel="stylesheet" type="text/css" href="/r/style.css">
+  <!--[if lt IE 9]>
+    <script src="/r/js/html5shiv.min.js"></script>
+    <script src="/r/js/respond.min.js"></script>
+  <![endif]-->
+  <script src="/r/js/index.js"></script>
+  <link rel="shortcut icon" href="/r/img/favicon.ico">
+</head>
+<body>
+  <div class="menubar">
+    <a class="rtopbutton" href="/r/zh/index.html"><img src="/r/img/r2logo32.png" alt="radare.org"></a>
+    <nav>
+      <ul>
+        <li><a href="/r/zh/down.html"> 源码 </a></li>
+        <li><a href="/r/zh/talks.html"> 演讲 </a></li>
+        <li><a href="/r/zh/docs.html"> 文档 </a></li>
+        <li><a href="/r/zh/pics.html"> 图片 </a></li>
+        <li><a href="/r/zh/me.html"> 关于 </a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main">
+
+<div class="header">
+  <h1> BlessR2 </h1>
+</div>
+<br />
+<div class="block2" style="text-align:center">
+<p>BlessR2 是一个基于 Node.js 的 radare2 的前端，r2pipe 和 blessed 模块，为了给 radare2 提供一个全响应的、异步的用户接口。</p>
+
+<p>BlessR2 依然处于 beta 阶段，但易于 hack，而且运行于 Linux，OSX 和 Windows。</p>
+
+<pre><code>$ npm install blessr2
+$ $(npm bin)/blessr2</code></pre>
+
+<p>或者，全局安装:</p>
+
+<pre><code>$ npm install -g blessr2
+$ blessr2 [...]</code></pre>
+
+<p>控制台应用显示 frame 中的命令输出，可以滚动，此时可在其中每一行执行动作。</p>
+
+<p><a href="/r/img/blessr2.png"><img alt="img" src="/r/img/blessr2.png"/></a></p>
+
+<p>按 &#39;?&#39; 键时，显示所有「快捷键」的文档，r2 可在此处进行完全配置。</p>
+
+<p><a href="/r/img/blessr2-config.png"><img alt="img" src="/r/img/blessr2-config.png"/></a></p>
+
+<p>此 UI 也可以用于调试，从 r2 继承了彩色的主体支持，窗体可以有阴影，通过「鼠标」进行半透明或拖拽。「转轮」用于滚动窗体的内容。背景被填充。</p>
+
+<p><a href="/r/img/blessr2-debug.png"><img alt="img" src="/r/img/blessr2-debug.png"/></a></p>
+
+<p>Ascii-Art 图小部件和代码图，是 256-色 全彩，以支持更好的二进制可视化。只要基于 r2pipe，后端可在任何地方运行，在本地或</p>
+
+<p><a href="/r/img/blessr2-map.png"><img alt="img" src="/r/img/blessr2-map.png"/></a></p>
+
+<p>这个是自由软件，从 <a href="https://github.com/radare/radare2-extras/">github</a> 检出代码。</p>
+</div>
+</div>
+
+<br /><br />
+    </div> <!-- .main -->
+
+  </body>
+</html>
+
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>radare</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="fira.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+  <script src="js/index.js"></script>
+  <link rel="shortcut icon" href="img/favicon.ico">
+</head>
+<body>
+  <div class="menubar">
+    <a class="rtopbutton" href="index.html"><img src="img/r2logo32.png" alt="radare.org"></a>
+    <nav>
+      <ul>
+        <li><a href="down.html">Code</a></li>
+        <li><a href="talks.html">Talks</a></li>
+        <li><a href="docs.html">Docs</a></li>
+        <li><a href="pics.html">Pics</a></li>
+        <li><a href="me.html">Me</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main">
+
+<div class="header">
+  <h1>BlessR2</h1>
+</div>
+<br />
+<div class="block2" style="text-align:center">
+<p>BlessR2 is a radare2 frontend based on Node.js, r2pipe and blessed modules in order to provide a fully responsive and asynchronous user interface for radare2.</p>
+
+<p>It&#39;s still in beta phase, but it&#39;s easy to hack on and it runs on Linux, OSX and Windows.</p>
+
+<pre><code>$ npm install blessr2
+$ $(npm bin)/blessr2</code></pre>
+
+<p>or do it globally:</p>
+
+<pre><code>$ npm install -g blessr2
+$ blessr2 [...]</code></pre>
+
+<p>This console application shows the output of the commands in frames that can be scrolled and perform actions on every line of them.</p>
+
+<p><a href="img/blessr2.png"><img alt="img" src="img/blessr2.png"/></a></p>
+
+<p>All keybindings are documented when pressing &#39;?&#39;, r2 can be fully configured from here.</p>
+
+<p><a href="img/blessr2-config.png"><img alt="img" src="img/blessr2-config.png"/></a></p>
+
+<p>The UI can be also used for debugging, color themes support is inherited from r2, windows can have shadow and be translucid and dragged with the mouse. The wheel is used to scroll in the window contents. The background is filled </p>
+
+<p><a href="img/blessr2-debug.png"><img alt="img" src="img/blessr2-debug.png"/></a></p>
+
+<p>Ascii-Art graphic widgets and code graphs in full 256-colors to enable better visualization of the binary. As long as it&#39;s based on r2pipe, the backend can run anywhere, in local or </p>
+
+<p><a href="img/blessr2-map.png"><img alt="img" src="img/blessr2-map.png"/></a></p>
+
+<p>This thing is free software, check it out in <a href="https://github.com/radare/radare2-extras/">github</a>.</p>
+</div>
+</div>
+
+<br /><br />
+    </div> <!-- .main -->
+
+  </body>
+</html>
+
+

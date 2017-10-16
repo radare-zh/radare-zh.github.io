@@ -1,0 +1,24 @@
+{
+  "bugs": {
+    "url": "https://github.com/rdio/jsfmt/issues"
+  },
+  "dependencies": {
+    "jsfmt": "*",
+    "js-beautify": "*",
+    "markdown": "*"
+  },
+  "description": "new website for radare.org",
+  "homepage": "https://radare.org/r",
+  "maintainers": [
+    {
+      "email": "pancake@nopcode.org",
+      "name": "pancake"
+    }
+  ],
+  "name": "radare.org.renew",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rdio/jsfmt"
+  },
+  "version": "0.1.1"
+}

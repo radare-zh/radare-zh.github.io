@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>radare</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="fira.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+  <script src="js/index.js"></script>
+  <link rel="shortcut icon" href="img/favicon.ico">
+</head>
+<body>
+  <div class="menubar">
+    <a class="rtopbutton" href="index.html"><img src="img/r2logo32.png" alt="radare.org"></a>
+    <nav>
+      <ul>
+        <li><a href="down.html">Code</a></li>
+        <li><a href="talks.html">Talks</a></li>
+        <li><a href="docs.html">Docs</a></li>
+        <li><a href="pics.html">Pics</a></li>
+        <li><a href="me.html">Me</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main">
+
+
+<div class="header">
+<h1>Downloads</h1>
+</div>
+<br />
+last release is 1.4.0
+<h2>Recommended Install from Git:</h2>
+<div class="block3">
+<pre class="code z" style="color:white !important">
+git clone https://github.com/radare/radare2
+cd radare2
+sys/install.sh   # just run this script to update r2 from git
+</pre>
+</div>
+<h2>Binaries:</h2>
+<br />
+
+<div class="block3 icons">
+
+<div class="icon">
+<a title="Source" href="https://github.com/radare/radare2">
+<img width=64 height=64 src="img/os-tux.png">
+<br>
+Source
+</a>
+</div>
+
+<div class="icon">
+<a title="windows" href="http://cloud.radare.org/get/1.4.0/radare2-w32-1.4.0.zip">
+<img width=64 height=64 src="img/os-windows.png">
+<br>
+W32
+</a>
+<a title="windows" href="http://bin.rada.re/radare2-w32-1.4.0.zip">
+
+/ Git
+</a>
+</div>
+
+<div class="icon">
+<a title="osx" href="http://cloud.radare.org/get/1.4.0/radare2-1.4.0.pkg">
+<img width="64" height="64" src="img/os-osx.png">
+<br>
+OS X
+</a>
+<!--
+<a title="osx" href="/get/pkg/radare2-1.4.0.pkg">
+/ Git
+</a>
+-->
+</div>
+
+<div class="icon">
+<a title="ios" href="http://cydia.radare.org/">
+<img width=64 height=64 src="img/os-cydia.png">
+<br>
+iOS
+</a>
+</div>
+
+<div class="icon">
+<a title="android" href="https://play.google.com/store/apps/details?id=org.radare2.installer">
+<img width=64 height=64 src="img/os-android.png">
+<br>Android</a>
+</div>
+
+
+<!--j
+<div class="icon">
+<a title="Linux" href="
+wget https://github.com/radare/radare2/archive/master.tar.gz">
+<img width=64 height=64 src="img/github.png">
+<br>
+Github
+</a>
+</div>
+-->
+
+<!--
+<div class="icon">
+<a title="VoidLinux livecd" href="http://bin.rada.re/r2live-20150901.iso">
+<img width=64 height=64 src="img/os-iso.png">
+<br>
+LiveCD
+</a>
+</div>
+-->
+
+<div class="icon">
+<a title="Docker Image" href="https://hub.docker.com/r/radare/radare2/">
+<img width=64 height=64 src="img/os-docker.png">
+<br>
+Docker
+</a>
+</div>
+
+</div>
+Or use the <a target="_blank" href="http://bin.rada.re">nightly</a> builds.
+<br />
+<br />
+<h2>Releases:</h2>
+<center>
+<div class="releases">
+<pre >
+<a href="http://cloud.radare.org/get/1.4.0/radare2-1.4.0.tar.gz">radare2</a>     1.4.0     2017-03-13
+<a href="http://cloud.radare.org/get/1.4.0/radare2-r2pipe-1.4.0.tar.gz">r2pipe</a>      1.4.0     2017-03-13
+<a href="http://cloud.radare.org/get/1.4.0/radare2-bindings-1.4.0.tar.gz">bindings</a>    1.4.0     2017-03-13
+<a href="http://cloud.radare.org/get/1.4.0/radare2-extras-1.4.0.tar.gz">r2-extras</a>   1.4.0     2017-03-13
+<a href="../get/valabind-0.10.0.tar.gz">valabind</a>    0.10.0  2016-01-20
+<a href="../get/sdb-0.10.5.tar.gz">sdb</a>         0.10.5  2016-08-16
+<a href="../get/acr-0.10.5.tar.gz">acr</a>         0.10.5  2016-08-16
+<a href="../get/ired-0.5.0.tar.gz">ired</a>        0.5.0   2013-07-08
+<a href="../get/radare-1.5.2.tar.gz">radare</a>      1.5.2   2010-05-23
+</pre>
+</div>
+</center>
+
+<br />
+<h2>Instructions:</h2>
+<div class="block3">
+<h2>Installation from tarball:</h2>
+<pre class='code z'>
+<span class='b'>~</span> <span class='r'>$</span> wget <a style="color:white;text-decoration:underline;" href="http://cloud.rada.re/get/1.4.0/radare2-1.4.0.tar.gz">http://cloud.rada.re/get/1.4.0/radare2-1.4.0.tar.gz</a>
+<span class='b'>~</span> <span class='r'>$</span> tar xzvf radare2-1.4.0.tar.gz
+<span class='b'>~</span> <span class='r'>$</span> cd radare2-1.4.0/
+<span class='b'>~/radare2-1.4.0</span> <span class='r'>$</span> ./configure --prefix=/usr
+<span class='b'>~/radare2-1.4.0</span> <span class='r'>$</span> make -j8
+<span class='b'>~/radare2-1.4.0</span> <span class='r'>$</span> sudo make install
+</pre>
+</div>
+<br />
+<div class="block3">
+<h2>Uninstall:</h2>
+To uninstall a r2 from a specific prefix run the following commands on the root directory of the radare2 source code:
+<pre class='code z'>
+<span class='b'>~</span> <span class='r'>$</span> cd radare2
+<span class='b'>~/radare2</span> <span class='r'>$</span> ./configure --prefix=/usr
+<span class='b'>~/radare2</span> <span class='r'>$</span> sudo make uninstall
+</pre>
+
+In case you want to remove all previous installations purge it.
+<pre class='code z'>
+<span class='b'>~/radare2</span> <span class='r'>$</span> sudo make purge
+</pre>
+
+To uninstall on OSX you'll need to 
+<pre class='code z'>
+<span class='b'>~</span> <span class='r'>$</span> sudo su -
+<span class='b'>~</span> <span class='r'>#</span> export PKG=org.radare.radare2
+<span class='b'>~</span> <span class='r'>#</span> cd /
+<span class='b'>/</span> <span class='r'>#</span> pkgutil --files --only-files $PKG | xargs rm -f
+<span class='b'>/</span> <span class='r'>#</span> pkgutil --files --only-dirs $PKG | xargs rmdir
+<span class='b'>/</span> <span class='r'>#</span> pkgutil --forget $PKG
+</pre>
+</div>
+<br />
+<div class="block3">
+<h2>radare2</h2>
+Advanced Hexadecimal Editor initially designed for forensics, but quickly evolved into a disassembler and debugger.
+<pre class="code z">
+<span class='b'>~</span> <span class='r'>$</span> git clone https://github.com/radare/radare2
+<span class='b'>~</span> <span class='r'>$</span> cd radare2
+<span class='b'>~/radare2</span> <span class='r'>$</span> sys/install.sh
+</pre>
+</div>
+
+<div class="block3">
+<h2>radare2 extras</h2>
+Yara, EWF, more archs, ...
+<pre class="code z">
+<span class='b'>~</span> <span class='r'>$</span> git clone https://github.com/radare/radare2-extras
+<span class='b'>~</span> <span class='r'>$</span> cd radare2-extras
+<span class='b'>~/radare2-extras</span> <span class='r'>$</span> ./configure --prefix=/usr
+<span class='b'>~/radare2-extras</span> <span class='r'>$</span> cd yara/yara3
+<span class='b'>~/radare2-extras/yara/yara3</span> <span class='r'>$</span> ../install-yara3.sh
+<span class='b'>~/radare2-extras/yara/yara3</span> <span class='r'>$</span> ./configure --prefix=/usr
+<span class='b'>~/radare2-extras/yara/yara3</span> <span class='r'>$</span> make
+<span class='b'>~/radare2-extras/yara/yara3</span> <span class='r'>$</span> sudo make install
+</pre>
+Or install them by hand
+<pre class='code z'>
+<span class='b'>~</span> <span class='r'>$</span> make
+<span class='b'>~</span> <span class='r'>$</span> cp plugin.so ~/.config/radare2/plugins
+<span class='b'>~</span> <span class='r'>$</span> R_DEBUG=1 r2 -qc. --
+</pre>
+</div>
+
+<div class="block3">
+<h2>radare2 bindings</h2>
+Support for r2pipe, duktape, python, nodejs, ruby, ...
+<pre class="code z">
+<span class='b'>~</span> <span class='r'>$</span> git clone https://github.com/radare/radare2-bindings
+<span class='b'>~</span> <span class='r'>$</span> cd radare2-bindings
+<span class='b'>~</span> <span class='r'>$</span> ./configure --prefix=/usr
+<span class='b'>~</span> <span class='r'>$</span> cd python
+<span class='b'>~/python</span> <span class='r'>$</span> make
+<span class='b'>~/python</span> <span class='r'>$</span> sudo make install
+</pre>
+R2Pipe APIs
+<pre class="code z">
+<span class='b'>~</span> <span class='r'>$</span> cd radare2-bindings/r2pipe/python
+<span class='b'>~/radare2-bindings/r2pipe/python</span> <span class='r'>$</span> python test.py
+</div>
+
+<div class="block3">
+<h2>test suite</h2>
+Testing every command, binary and operation is needed to avoid having regressions.
+<pre class='code z'>
+<span class='b'>~</span> <span class='r'>$</span> git clone https://github.com/radare/radare2-regressions
+<span class='b'>~</span> <span class='r'>$</span> cd radare2-regressions
+<span class='b'>~/radare2-regressions</span> <span class='r'>$</span> make
+</pre>
+</div>
+
+
+<div class="block3">
+<h2>radare</h2>
+The very old and original version of radare. Maintained for historial reasons.
+<pre class='code z'>
+<span class='b'>~</span> <span class='r'>$</span> git clone https://github.com/radare/radare
+<span class='b'>~</span> <span class='r'>$</span> cd radare
+<span class='b'>~/radare</span> <span class='r'>$</span> ./configure --prefix=/usr
+<span class='b'>~/radare</span> <span class='r'>$</span> make
+<span class='b'>~/radare</span> <span class='r'>$</span> sudo make install
+</pre>
+</div>
+
+<div class="block3">
+<h2>valabind</h2>
+The tool used to autogenerate the language bindings for SWIG, Ctypes, NodeJS, Dlang, Go
+<pre class="code z">
+<span class='b'>~</span> <span class='r'>$</span> git clone https://github.com/radare/valabind
+<span class='b'>~</span> <span class='r'>$</span> cd valabind
+<span class='b'>~/valabind</span> <span class='r'>$</span> make
+<span class='b'>~/valabind</span> <span class='r'>$</span> sudo make install PREFIX=/usr
+</pre>
+</div>
+
+<div class="block3">
+<h2>ired</h2>
+Minimalistic hexadecimal editor designed to be used in scripts with pipes. Mimics some r2 commands.
+<pre class="code z">
+<span class='b'>~</span> <span class='r'>$</span> git clone https://github.com/radare/ired
+<span class='b'>~</span> <span class='r'>$</span> cd ired
+<span class='b'>~/ired</span> <span class='r'>$</span> make
+<span class='b'>~/ired</span> <span class='r'>$</span> sudo make install PREFIX=/usr
+</pre>
+</div>
+
+<div class="block3">
+<h2>sdb</h2>
+String Database is a ondisk/memory hashtable based on CDB which operates with key-values of a single data type: strings.
+<pre class="code z">
+<span class='b'>~</span> <span class='r'>$</span> git clone https://github.com/radare/sdb
+<span class='b'>~</span> <span class='r'>$</span> cd sdb
+<span class='b'>~/sdb</span> <span class='r'>$</span> make
+<span class='b'>~/sdb</span> <span class='r'>$</span> make -C tests
+</pre>
+</div>
+
+<div class="block3">
+<h2>acr</h2>
+AutoConfReplacement
+<pre class="code z">
+<span class='b'>~</span> <span class='r'>$</span> git clone https://github.com/radare/acr
+<span class='b'>~</span> <span class='r'>$</span> cd acr
+<span class='b'>~/sdb</span> <span class='r'>$</span> ./configure --prefix=/usr
+<span class='b'>~/sdb</span> <span class='r'>$</span> make
+<span class='b'>~/sdb</span> <span class='r'>$</span> sudo make install
+</pre>
+</div>
+<br /><br />
+    </div> <!-- .main -->
+
+  </body>
+</html>
+

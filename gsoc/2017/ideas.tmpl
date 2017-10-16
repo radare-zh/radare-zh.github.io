@@ -1,0 +1,427 @@
+<a id='index'></a>
+<h1>Project Ideas</h1>
+
+<p><ul><li><a href='#title_0'><b>Completing Radeco</b></a>
+<li><a href='#title_1'><b>Ropchain generator with ragg2</b></a>
+<li><a href='#title_2'><b>Improve remote debugging with GDBServer and RAP</b></a>
+<li><a href='#title_3'><b>Timeless debugging support</b></a>
+<li><a href='#title_4'><b>Handle EXE/DLL as FAT binaries</b></a>
+<li><a href='#title_5'><b>Proper Windows platform support</b></a>
+<li><a href='#title_6'><b>Web interface</b></a>
+</ul></p>
+
+
+<a id="title_0"></a><a href="#index">^</a> <h2>Completing Radeco</h2>
+
+<p>radeco, a radare2 based decompiler, was a project that was started in GSoC'15, and continued in GSoC'16. Currently, radeco features a ESIL to SSA IL converter, skeleton of C emitter and a  few optimisations to the IR. The task for this year is to complete the full process of the decompiler (from binary to C pseudo-code). This involves several tasks which are listed below. Note that some of these tasks are large and are listed to give students a complete view of the requirements of this project. A potential student is required to discuss these with the mentors and pick some tasks to write their proposals for GSoC'17. Being a relatively new project under the radare banner, this project also gives student an opportunity to learn, design and discuss the architectural aspects of the project.</p>
+
+<h3>Tasks</h3>
+
+<ul>
+<li>finishing radecoIL to higher level pseudo/C code writer. This task is the highest priority as it would give us a chance to evaluate the quality of the produces code, receive feedback from the community and aim our efforts in the improving the same in further iterations.</li>
+<li>Control graph restructuring and reshaping - external API to do that</li>
+<li>Implement GOTO elimination in radecoIL</li>
+<li>Type inference - should be in sync with radare2 internal types and arguments analysis (see aft* commands)</li>
+<li>Continuing on the same lines of the previous task, it would be nice to layout graphs like a CFG. The current dot emitter gives complete freedom to graphviz to layout the graph, which results in sub-optimal layout of the graph. This task is to improve this and make it more intuitive and readable.</li>
+<li>Setup a primitive logging framework for radeco. This allows us to debug and follow the steps of the decompiler easier in order to reason about the process and perform optimisation (not just time but also quality of the output).</li>
+<li>Full integration with radare2 shell. This shell should allow users to interact with the entire decompilation process and modify any stages if necessary. Additional features like graph colouring / marking would also be a nice bonus.</li>
+<li>Support of loading information, like variable values, memory regions and so on, into radeco, to
+improve the analysis and decompilation restuls</li>
+<li>Port some basic analysis such as function recognition from radare2. radeco is in a much better place to implement such analysis. It would be better to implement this in radeco so that we do not have to depend on radare2 for function recognition and also return the results back to radare2.</li>
+</ul>
+
+<p>Additionally, the students are also expected to detail their architecture (in the wikis) and write tests and documentation for any features that they contribute.</p>
+
+<h3>Skills</h3>
+
+<p>Knowledge of working of compilers and program analysis (or an interest to learn these quickly)
+Some knowledge of rust is an added bonus. A potential student must be willing to learn rust in order to contribute to this project.
+Some knowledge of common ISA such as x86, x86_64, ARM.</p>
+
+<h3>Difficulty</h3>
+
+<p>Advanced</p>
+
+<h3>Benefits for the student</h3>
+
+<ul>
+<li>General idea about compiler/decompiler working model</li>
+<li>Usage of the Intermediate Languages</li>
+<li>Binary code analysis</li>
+</ul>
+
+<h3>Benefits for the project</h3>
+
+<p>Finally, radare2 will have its own retargetable decompiler, which will cover a wide range of architectures.</p>
+
+<h3>Assess requirements for midterm/final evaluation</h3>
+
+<p>For the midterm evaluations, the student is expected to have completed the C/pseudo code emitter and obtain the first set of results.
+The final evaluation requires students to have improved the quality of the generated code and have a working type inference system.</p>
+
+<h3>Mentors</h3>
+
+<ul>
+<li>crowell</li>
+<li>xvilka</li>
+</ul>
+
+<h3>Links/Resources</h3>
+
+<ul>
+<li><a href="https://github.com/radare/radeco-lib">Radeco-lib</a></li>
+<li>Radeco-lib <a href="https://github.com/radare/radeco-lib/issues">issues</a></li>
+<li><a href="https://drive.google.com/drive/folders/0B1X32SwXTZPuYWwxWW5BNi1oWDA?usp=sharing">Papers about decompilation</a></li>
+</ul>
+
+<a id="title_1"></a><a href="#index">^</a> <h2>Ropchain generator with ragg2</h2>
+
+<p>Since modern architectures are now enforcing <a href="https://en.wikipedia.org/wiki/W%5EX">W^X</a>, exploiters are using <a href="https://en.wikipedia.org/wiki/Return-oriented_programming">ROP</a>. (Un)fortunately, building rop chain by hand can be tedious, this is why some tools can be used to ease this construction: ImmunityDBG has <a href="https://www.corelan.be/index.php/2012/12/31/jingle-bofs-jingle-rops-sploiting-all-the-things-with-mona-v2/">mona.py</a>, there is also <a href="http://www.shell-storm.org/project/ROPgadget/">ROPgadget</a> and <a href="https://github.com/rizlik/dropper">dropper</a>. It's a shame that despite having <a href="https://github.com/radare/radare2/wiki/ESIL">ESIL</a>, radare2 doesn't have something similar yet.</p>
+
+<h3>Task</h3>
+
+<ol>
+<li>Implement a "classic" (<code>/bin/sh</code> for example) ropchain as a proof-of-concept, like what <a href="https://github.com/JonathanSalwan/ROPgadget">ROPgadget</a> does. This can be done is almost any language, thanks to the bindings/r2pipe.</li>
+<li>Caching rop gadgets in SDB, for quicker retrieval</li>
+<li>Implement a ropchain generator that uses ragg syntax, or something like:
+<code>
+register reg1 = 0;
+register reg2 = whatever;
+register reg3 = reg1 + reg2;
+system(reg3);
+</code></li>
+</ol>
+
+<h3>Skills</h3>
+
+<p>The student should be comfortable with the C language, know some assembly and a high-level language. Also, knowing a little bit of automatic binary analysis wouldn’t hurt.</p>
+
+<h3>Difficulty</h3>
+
+<p>Medium</p>
+
+<h3>Benefits for the student</h3>
+
+<p>The student will improve their skills in software exploitation and solvers.</p>
+
+<h3>Benefits for the project</h3>
+
+<p>This feature would greatly help during exploits development, and people would be able to ditch mona.py for radare2 ;)</p>
+
+<h3>Assess requirements for midterm/final evaluation</h3>
+
+<p>midterm: ROP gadgets stored in sdb, and gadget classification
+final evaluation: a working ropchain builder</p>
+
+<h3>Mentors</h3>
+
+<ul>
+<li>jvoisin</li>
+<li>crowell</li>
+</ul>
+
+<h3>Links/Resources</h3>
+
+<ul>
+<li><a href="http://shell-storm.org/project/ROPgadget/">ROPGadget</a></li>
+<li><a href="https://www.corelan.be/index.php/2012/12/31/jingle-bofs-jingle-rops-sploiting-all-the-things-with-mona-v2/">mona.py</a> from corelan</li>
+<li><a href="https://media.blackhat.com/us-13/US-13-Quynh-OptiROP-Hunting-for-ROP-Gadgets-in-Style-WP.pdf">Hunting for ROP Gadgets in Style</a> (2012)</li>
+<li><a href="https://github.com/rizlik/dropper">dropper</a> a BARF-based rop chain generator</li>
+<li><a href="http://dustri.org/b/files/hacklu2014_r2_exploitation.tar.xz">Materials</a> about the exloitation workshop at Hack.lu 2014</li>
+<li><a href="https://github.com/XVilka/hacklu">Slides</a> for the exploitation part of workshop at Hack.lu 2015</li>
+<li><a href="https://github.com/radare/radare2/issues?q=is%3Aissue+is%3Aopen+ROP">ROP related bugs</a></li>
+</ul>
+
+<a id="title_2"></a><a href="#index">^</a> <h2>Improve remote debugging with GDBServer and RAP</h2>
+
+<p>Having a reusable implementation of gdbserver in r2 will be useful because it means that r2 will be able to be used from IDA, GDB or LLDB as frontend. And being able to use r2 too to communicate with a remote r2 instance with better integration for remote debugging.</p>
+
+<p>Also, the current r2 remote debugging is done via rap:// which is just a plain io+system protocol. it will be good to support a remote debugging via serializing r2 commands so we need a debug_rap plugin.</p>
+
+<h3>Task</h3>
+
+<ul>
+<li>Implement simple GDB packets parser for server side</li>
+<li>Merge/share this code with <a href="https://github.com/radare/radare2/tree/master/shlr/gdb">shlr/gdb</a></li>
+<li>Add support for:
+<ul><li>registers access</li>
+<li>memory access</li>
+<li>breakpoints</li>
+<li>single stepping</li>
+<li>kill signal for the target</li>
+<li>handling threaded applications</li></ul></li>
+<li>Think about shareable between server and client register and platform profiles</li>
+<li>Implement those profiles for:
+<ul><li>x86 (x86_64)</li>
+<li>ARM (ARM64)</li>
+<li>MIPS</li>
+<li>PowerPC</li>
+<li>other common architectures</li></ul></li>
+</ul>
+
+<h3>Skills</h3>
+
+<p>Student should know C, have some experience with socket/network programming and a general idea about how debuggers works</p>
+
+<h3>Difficulty</h3>
+
+<p>Advanced</p>
+
+<h3>Benefits for the student</h3>
+
+<p>The student will understand how most of the remote debugging works "under the hood". And will have general knowledge about writing mutiplatfform debuggers, as like as bits of network programming.</p>
+
+<h3>Benefits for the project</h3>
+
+<p>The fact we have our own gdbserver implementation will help us to improve GDB protocol on both client and server sides, which will make the testing protcol parser easier. Also radare2 would not rely on the non-standard debug protcols for exotic platforms, since it would be easier to port radare2 gdbserver on that platform.</p>
+
+<h3>Assess requirements for midterm/final evaluation</h3>
+
+<p>Midterm will be successfull if the simpe gdbserver, working via sockets will be able to talk with radare2 and gdb
+Final evaluation will require gdbserver which should work at least on x86, arm, mips and powerpc platforms, able to answer radare2, gdb, lldb and IDA Pro rquests.</p>
+
+<h3>Mentors</h3>
+
+<ul>
+<li>pancake</li>
+<li>xvilka</li>
+</ul>
+
+<h3>Links/Resources</h3>
+
+<ul>
+<li><a href="https://sourceware.org/gdb/onlinedocs/gdb/Remote-Protocol.html">GDB remote protocol specification</a></li>
+<li><a href="https://github.com/radare/radare2/tree/master/shlr/gdb">GDB protocol parser</a></li>
+<li><a href="https://github.com/radare/radare2/tree/master/shlr/wind">WinDbg protocol parser</a></li>
+<li><a href="https://github.com/radare/radare2/issues/1773">Issue #1773</a></li>
+</ul>
+
+<a id="title_3"></a><a href="#index">^</a> <h2>Timeless debugging support</h2>
+
+<p>We want to add support for timeless debugging in r2. This requires to design and implement a generic API that would allow to load recorded tracing sessions from tools like rr, QIRA or r2 itself. r2 can’t create tracing sessions and it should be implemented in the debugging component of our tool. We already have support for debugging snapshots, so those actions should be available as callbacks in the debugger plugins, and provide some basic commands to specify which snapshot to get or set.</p>
+
+<h3>Task</h3>
+
+<ol>
+<li>Read/write memory at any moment in the debugging history</li>
+<li>Same for registers</li>
+<li>Be able to seek forward/backward in time</li>
+<li>Implement step back command (dsb)</li>
+</ol>
+
+<h3>Skills</h3>
+
+<p>Student should know C and C++ (for integration with tools like RR or Qira).
+And should be familiar with the ideas of reversible debugging along with the knowledge how debuggers are working.</p>
+
+<h3>Difficulty</h3>
+
+<p>Advanced</p>
+
+<h3>Benefits for the student</h3>
+
+<p>Student will meet a relatively new approach to debug and searching errors, along with an opportunity to gather experience of optimizing algorythms to be able work with a huge amount of data, which is a definetely a case for timeless debug.</p>
+
+<h3>Benefits for the project</h3>
+
+<p>Timeless and reversible debugging will help radare2 to become an universal debug tool for quick and easy inspection of trace snapshots, based on RR or Qira sessions.</p>
+
+<h3>Assess requirements for midterm/final evaluation</h3>
+
+<p>Midterm: design and implementation of the interface and commands to work with traces taken from QIRA and RR.
+Final: Add the plugin for timeless debugging feature inside r2.</p>
+
+<h3>Mentors</h3>
+
+<ul>
+<li>pancake</li>
+<li>alvaro_fe</li>
+</ul>
+
+<h3>Links/Resources</h3>
+
+<ul>
+<li><a href="http://rr-project.org/">RR</a> - Record and Replay framework from Mozilla</li>
+<li>RR <a href="https://github.com/mozilla/rr">sources</a></li>
+<li><a href="http://qira.me/">Qira</a></li>
+<li>Qira <a href="https://github.com/BinaryAnalysisPlatform/qira">sources</a></li>
+</ul>
+
+<a id="title_4"></a><a href="#index">^</a> <h2>Handle EXE/DLL as FAT binaries</h2>
+
+<p>Windows programs are like Apple's FAT binaries, they contain multiple programs inside, and r2 should be able to list and select them when loading. Also, it may be possible to extract them with rabin2 -x foo.exe.
+The sub-bins inside an EXE are:
+1. DOS program
+2. W16 program
+3. W32 program
+4. MSIL program (.NET)</p>
+
+<h3>Task</h3>
+
+<p>This task also includes adding support for .NET in RBin, to be able to list the symbols, get the entrypoint, code metadata, etc. This will require rethinking some of the commands to allow switch between parts of this FAT binary on the fly.
+1. Fix current fatmach0
+2. dyldcache is broken
+3. PE (dos, win, .net) separation
+4. Add support for iOS OTA images (see issue)</p>
+
+<h3>Skills</h3>
+
+<p>The student should be comfortable with the C language, and be familiar with windows binaries</p>
+
+<h3>Difficulty</h3>
+
+<p>Advanced</p>
+
+<h3>Benefits for the student</h3>
+
+<p>The student will gain a deep understanding of Microsoft's executable formats.</p>
+
+<h3>Benefits for the project</h3>
+
+<p>Currently, there are no up to date modern tools to deal with .Net programs in a low-level manner, when decompilers fail. With this task, we'd like to fill this gap.</p>
+
+<h3>Assess requirements for midterm/final evaluation</h3>
+
+<p>Midterm: Support of FAT binaries (Win32 native + .NET) in RBin, basic one
+Final: Also should be working with listing symbols from both parts of the binary (e.g. .NET and native code), as long as other metadata. And show this metadata in rabin2 output as well.</p>
+
+<h3>Mentors</h3>
+
+<ul>
+<li>pancake</li>
+<li>alvaro_fe</li>
+</ul>
+
+<h3>Links/Resources</h3>
+
+<ul>
+<li><a href="https://github.com/radare/radare2/issues/662">Issue #662</a></li>
+<li><a href="http://www.microsoft.com/net">Official .Net resources</a></li>
+</ul>
+
+<a id="title_5"></a><a href="#index">^</a> <h2>Proper Windows platform support</h2>
+
+<p>Radare2 has a basic support for windows but tests are still not passing under AppVeyor, debugging has still problems,
+and some features of radare2 does not work properly or <a href="https://github.com/radare/radare2/issues/4163">at all</a>. This task consists from some small,
+some big unrelated tasks to improve the basic and advanced support of running radare2 on Windows
+platform</p>
+
+<h3>Tasks</h3>
+
+<ol>
+<li>Fix current features on Windows platform:
+<ul><li>Debugger: check if it work on Windows XP - 10.</li>
+<li>Regression tests: make them pass locally</li>
+<li>Regression tests: run them on AppVeyor automatically</li></ul></li>
+<li>Improve <a href="https://github.com/radare/radare2/issues/3128">PDB loading</a> support and <a href="https://github.com/radare/radare2/issues/3143">integration with analysis</a> subsystem</li>
+<li>Make zignatures for Windows libraries</li>
+<li>Better Support for .dll (analysis and debugger)</li>
+<li>Ability to find out WinMain automatically, parsing SEH and RTTI</li>
+<li>Improve <a href="https://github.com/radare/radare2/tree/master/shlr/wind">WinDbg protocol</a> support and integration with analysis</li>
+<li>Add support of loading all kinds of user mode minidumps and kernel dumps</li>
+</ol>
+
+<h3>Skills</h3>
+
+<p>The student should be comfortable with programming under Windows platform. They don't need to have a reverse engineering background, since most of the missing stuff is well documented. As a bonus point it would be interesting if they know some basic assembly.</p>
+
+<h3>Difficulty</h3>
+
+<p>Medium. If the student is comfortable with programming for Windows, there shouldn't be major challenges except WinDbg protocol support.</p>
+
+<h3>Benefits for the student</h3>
+
+<p>The student will gain experience in writing debuggers for Windows platform. Also, the student will learn the Windows platform crucial parts' internals, related to debugging.</p>
+
+<h3>Benefits for the project</h3>
+
+<p>Since radare2 has a better support for emulation and analysis, this will help to migrate from WinDbg to radare2.</p>
+
+<h3>Assess requirements for midterm/final evaluation</h3>
+
+<p>The student must finish the regression tests pass stage during the first evaluation. WinDbg protocol support improvements are the requirement to pass the 2nd evaluation. Ability to parse various versions of PDB format + regression tests for them is a final evaluation requirement.</p>
+
+<h3>Mentors</h3>
+
+<ul>
+<li>maijin</li>
+<li>xvilka</li>
+</ul>
+
+<h3>Links/Resources</h3>
+
+<ul>
+<li>The <a href="https://github.com/radare/radare2/issues/1246">current</a> WinDbg protocol support issues</li>
+<li>Windows support - <a href="https://github.com/radare/radare2/issues/1194">META</a> issue</li>
+<li><a href="https://github.com/radare/radare2/labels/Windows">Related issues</a> on github</li>
+<li><a href="http://llvm.org/docs/PDB/index.html">PDB format</a> description (LLVM project)</li>
+<li><a href="https://pykd.codeplex.com/">PyKD</a> - WinDbg extension via Python tools</li>
+<li><a href="https://github.com/Lekensteyn/kdnet">KDnet</a> - Windows kernel debugging over Network</li>
+<li><a href="http://virtualkd.sysprogs.org/">VirtualKD</a> debugger</li>
+<li><a href="https://github.com/MarioVilas/winappdbg">WinAppDbg</a> debugger</li>
+<li><a href="https://blogs.msdn.microsoft.com/luisdem/2016/07/19/mex-debugging-extension-for-windbg-2/">MEX</a> debugging extensions for WinDbg</li>
+<li><a href="https://karmadbg.codeplex.com/">KarmaDbg</a> - PyKD extension</li>
+<li><a href="https://github.com/lowleveldesign/debug-recipes/blob/master/debugging-using-windbg/windbg-extensions.md">WinDbg extensions list</a></li>
+<li><a href="http://windbg.info/doc/1-common-cmds.html">WinDbg cheatsheet</a></li>
+<li><a href="http://www.andreybazhan.com/dbgkit.html">DbgKit</a> - WinDbg extension for working with processes</li>
+</ul>
+
+<a id="title_6"></a><a href="#index">^</a> <h2>Web interface</h2>
+
+<p>Radare2 has a nice <a href="http://cloud.rada.re/m">web interface</a> (and not only one: /p, /m and /t), but it's not currently as complete as the command line one. While the latter is more powerful, it has a steep learning curve, and it not usable on every devices (Like cellphones or tablets); this is we'd like to put some efforts into an awesome, functional web interface.</p>
+
+<h3>Tasks</h3>
+
+<ol>
+<li>Implement/enhance widgets like:
+<ul><li>Hexeditor: view and edit, columns should be configurable.</li>
+<li>Graph: Interactive basicblocks/functions/bindiff graphs.</li>
+<li>Sections: Memory ranges with attributes.</li>
+<li>Search: Strings, opcodes, ...</li>
+<li>Structures: Edition, view, manipulation, …</li>
+<li>Functions: Edition, view, manipulation, arguments, XREF, ...</li></ul></li>
+<li>Make it <a href="https://en.wikipedia.org/wiki/Responsive_Web_Design">responsive</a></li>
+<li>Make it more keyboard friendly (aka-olly)</li>
+<li>Better Interface for the debugger
+<ul><li>Panels with list of breakpoints</li>
+<li>Backtrace with clickable offsets</li>
+<li>Register panel</li></ul></li>
+<li>Optimize it, compress JS, reduce AJAX queries, make it usable on all devices</li>
+</ol>
+
+<h3>Skills</h3>
+
+<p>The student should be comfortable with modern web technologies like javascript and HTML5. They don't need to be über-comfortable with C nor assembly, since all the information is obtained directly from radare2.
+As a bonus point it would be interesting if they know some basic assembly.
+It's better if student will come with a few simple mockups what [s]he is going to do.</p>
+
+<h3>Difficulty</h3>
+
+<p>Easy. If the student if comfortable with web technologies, there shouldn't be any major challenges in complteting this task.</p>
+
+<h3>Benefits for the student</h3>
+
+<p>The student will gain experience in writing rich web applications, and domain-specific user interface. Also, the student will learn to design usable APIs, since this task will deal with interfacing C and Javascript.</p>
+
+<h3>Benefits for the project</h3>
+
+<p>Since radare2 has a steep learning curve, this task will lower the barrier for transitioning from IDA to radare2.</p>
+
+<h3>Assess requirements for midterm/final evaluation</h3>
+
+<p>The student must focus on the material webui as long is the one used by default in Android and it is also the fastest one to load. Adding more visual feedback like displaying graphs for entropy, section sizes, ... and support for editing code or data, and be able to use the debugger in a more comfortable way.</p>
+
+<h3>Mentors</h3>
+
+<ul>
+<li>pancake</li>
+</ul>
+
+<h3>Links/Resources</h3>
+
+<ul>
+<li>The <a href="http://cloud.rada.re/m">current</a> web interface</li>
+<li><a href="http://radare.today/the-new-web-interface/">Announcement</a> of its release</li>
+<li><a href="https://github.com/radare/radare2-webui/issues">Related issues</a> on github</li>
+</ul>
+

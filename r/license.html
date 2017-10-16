@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>radare</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="fira.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+  <script src="js/index.js"></script>
+  <link rel="shortcut icon" href="img/favicon.ico">
+</head>
+<body>
+  <div class="menubar">
+    <a class="rtopbutton" href="index.html"><img src="img/r2logo32.png" alt="radare.org"></a>
+    <nav>
+      <ul>
+        <li><a href="down.html">Code</a></li>
+        <li><a href="talks.html">Talks</a></li>
+        <li><a href="docs.html">Docs</a></li>
+        <li><a href="pics.html">Pics</a></li>
+        <li><a href="me.html">Me</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main">
+
+<div class="header">
+  <h1>License</h1>
+</div>
+
+<div class="block2">
+<p>radare2 is licensed under <a href="https://www.gnu.org/licenses/lgpl-3.0">LGPLv3</a>.</p>
+
+<p>The LesserGPLv3 have the following features:</p>
+
+<ul><li>Privative software (closed source/comercial) can link to it (dynamically).</li><li>Privative/Commercial plugins can be developed for it.</li><li>All modifications in the opensource part must be done public.</li><li>This way, everyone can benefit from the commercial and opensource worlds.</li></ul>
+
+<p>For a sucessful real case of that LGPL see <a href="http://gstreamer.freedesktop.org/">GStreamer</a>.</p>
+
+<p>If you don&#39;t want to have legal issues you&#39;ll have to understand how software licenses works.</p>
+
+<p>It is important to note that not all plugins in r2 are under the same license, you&#39;ll find some pieces in GPL2, BSD, Apache, etc.</p>
+
+<p>We are trying to shrink and squash all the GPL code as much as possible because of the following reasons.</p>
+
+<ul><li>GPL is a viral license.</li><li>You can only statically link GPL programs against them.</li><li>You can&#39;t dynamically link privative apps with GPL libraries.</li></ul>
+
+<p>In case of doing a privative software that uses r2 as backend and you dont want to care about special builds or detailed license problems, I would recommend to use r2 via r2pipe and distribute r2 as a separate package for your privative app. This way the GPL viral will not be infect your software because there&#39;s no binary link between them, only a textual protocol via a pipe or socket.</p>
+
+<p>The current parts that are under GPL and will be replaced or removed soon
+(old code is moved to the <a href="https://github.com/radare/radare2-extras">radare2-extras</a> repository).</p>
+
+<ul><li>Some exotic disassemblers</li><li>GRUB (libr/fs) - partitions and filesystems</li><li>GNU binutils disassemblers (almost replaced by Capstone)</li><li>C++ demangler (from binutils)</li></ul>
+
+<p>Grepping for licenses in r_asm plugins</p>
+
+<pre><code>$ rasm2 -L | grep GPL | grep -v LGPL
+_dA_  16 32      arc         GPL3    Argonaut RISC Core
+adA_  16 32 64   arm.gnu     GPL3    Acorn RISC Machine
+_dA_  16 32      avr         GPL     AVR Atmel
+_dAe  32         cris        GPL3    Axis Comm. 32-bit
+adAe  32 64      mips.gnu    GPL3    MIPS CPU
+_dAe  32         nios2       GPL3    NIOS II
+_dA_  32 64      ppc.gnu     GPL3    PowerPC
+_dA_  32         sh          GPL3    SuperH-4 CPU
+_dA_  32 64      sparc.gnu   GPL3    Scalable Proc Arch
+ad__  32         x86.olly    GPL2    OllyDBG X86 Disasm</code></pre>
+
+<p>If you want to ship r2 in your privative product remember to remove all the GPL plugins from your build using a custom <code>plugins.cfg</code> or passing it to <code>./configure-plugins</code>.</p>
+
+<p>If you have any other question about licenses, I would recommend you to contact the <a href="http://www.fsf.org">Free Software Foundation</a> or just drop me an email.</p>
+
+<p>--pancake</p>
+</div>
+
+<br /><br />
+    </div> <!-- .main -->
+
+  </body>
+</html>
+
